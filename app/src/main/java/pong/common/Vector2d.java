@@ -26,7 +26,7 @@ public class Vector2d implements Serializable {
     public Vector2d mul(double fact) {
         return new Vector2d(x * fact, y * fact);
     }
-
+   
     public double module(){
         return (double)Math.sqrt(x*x+y*y);
     }
