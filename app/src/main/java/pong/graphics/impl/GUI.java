@@ -1,5 +1,5 @@
 package pong.graphics.impl;
 
-public class Scene {
+public class GUI {
     
 }
