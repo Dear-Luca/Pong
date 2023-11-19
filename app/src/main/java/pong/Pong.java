@@ -3,12 +3,12 @@
  */
 package pong;
 
-public class Pong {
-    public String getGreeting() {
-        return "Hello World!";
-    }
+import pong.core.GameEngine;
 
+public class Pong {
     public static void main(String[] args) {
-        System.out.println(new Pong().getGreeting());
-    }
+		GameEngine engine = new GameEngine();
+		engine.setup();
+		engine.mainLoop();
+	}
 }

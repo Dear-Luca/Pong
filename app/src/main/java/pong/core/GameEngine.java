@@ -2,10 +2,17 @@ package pong.core;
 
 import java.util.logging.*;
 
+import pong.graphics.impl.GUI;
+
 public class GameEngine {
     private long period = 6_944_444; /* 7 ms =~ 144hz (Standard)*/
-
+    private GUI view;
     private Logger logger = Logger.getLogger("GameEngine");
+
+
+    public void setup(){
+        view = new GUI(500, 600);
+    }
 
     public void mainLoop() {
         long previousCycleStartTime = System.nanoTime();
