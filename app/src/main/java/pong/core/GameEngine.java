@@ -3,15 +3,17 @@ package pong.core;
 import java.util.logging.*;
 
 import pong.graphics.impl.GUI;
+import pong.model.impl.World;
 
 public class GameEngine {
     private long period = 6_944_444; /* 7 ms =~ 144hz (Standard)*/
     private GUI view;
     private Logger logger = Logger.getLogger("GameEngine");
-
+    private World world;
 
     public void setup(){
-        view = new GUI(500, 600);
+        world = new World();
+        view = new GUI(world,500, 600);
     }
 
     public void mainLoop() {
