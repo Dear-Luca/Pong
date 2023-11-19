@@ -3,7 +3,7 @@ package pong.core;
 import java.util.logging.*;
 
 public class GameEngine {
-    private long period = 6_944_444; /* 7 ms =~ 144 frame al secondo al piu` */
+    private long period = 6_944_444; /* 7 ms =~ 144hz (Standard)*/
 
     private Logger logger = Logger.getLogger("GameEngine");
 
