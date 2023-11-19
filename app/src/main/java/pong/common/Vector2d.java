@@ -27,6 +27,10 @@ public class Vector2d implements Serializable {
         return new Vector2d(x * fact, y * fact);
     }
 
+    public double module(){
+        return (double)Math.sqrt(x*x+y*y);
+    }
+
     @Override
     public String toString() {
         return "P2d(" + x + "," + y + ")";
