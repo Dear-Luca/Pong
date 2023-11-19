@@ -1,4 +1,4 @@
-package main.java.pong.core;
+package pong.core;
 
 public class GameEngine {
     

@@ -1,4 +1,4 @@
-package main.java.pong.graphics.impl;
+package pong.graphics.impl;
 
 public class Scene {
     

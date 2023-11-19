@@ -1,4 +1,4 @@
-package main.java.pong.model.api;
+package pong.model.api;
 
 public interface GameObject {
     
