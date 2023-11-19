@@ -20,6 +20,8 @@ public class GUI {
         frame.setSize(width, height);
         frame.setResizable(false);
         this.scene = scene;
+        panel = new PongGamePanel(scene, width, height);
+        frame.getContentPane().add(panel);
         // frame.serUndecorated(true);
         frame.addWindowListener(new WindowAdapter() {
 
