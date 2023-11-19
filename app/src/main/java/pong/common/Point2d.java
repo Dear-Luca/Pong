@@ -3,10 +3,10 @@ package pong.common;
 import java.io.Serializable;
 
 public class Point2d implements Serializable {
-    private final long x;
-    private final long y;
+    private final double x;
+    private final double y;
 
-    public Point2d(final long x, final long y) {
+    public Point2d(final double x, final double y) {
         this.x = x;
         this.y = y;
     }
@@ -15,11 +15,11 @@ public class Point2d implements Serializable {
         return new Point2d(x+vet.getX(), y+vet.getY());
     }
 
-    public long getX(){
+    public double getX(){
         return this.x;
     }
 
-    public long getY(){
+    public double getY(){
         return this.x;
     }
 
