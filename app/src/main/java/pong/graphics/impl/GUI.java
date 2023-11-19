@@ -10,16 +10,16 @@ import java.awt.event.WindowEvent;
 
 public class GUI {
     private JFrame frame;
-    private ScenePanel panel;
+    /*private ScenePanel panel;
     private GameState scene;
-    private Controller controller;
+    private Controller controller;*/
 
 
-    public GUI(World scene, int width, int height){
+    public GUI(/*World scene,*/ int width, int height){
         frame = new JFrame("PONG!!");
         frame.setSize(width, height);
         frame.setResizable(false);
-        this.scene=scene;
+        //this.scene=scene;
         //frame.serUndecorated(true);
         frame.addWindowListener(new WindowAdapter() {
             
