@@ -3,7 +3,7 @@
  */
 package pong;
 
-public class App {
+public class Pong {
     public String getGreeting() {
         return "Hello World!";
     }
