@@ -4,44 +4,41 @@ import java.util.List;
 
 import pong.model.api.GameObject;
 
-import java.util.ArrayList;
-
 public class World {
-    private List<Paddel> padList;
+    private Paddel leftPaddel;
+    private Paddel rightPaddel;
     private Ball ball;
 
     public World() {
-        padList = new ArrayList<Paddel>();
     }
 
     public void updateState(long dt) {
-        for (Paddel pad : padList) {
-            pad.updatePosition(dt);
-        }
-
+        leftPaddel.updatePosition(dt);
+        rightPaddel.updatePosition(dt);
         ball.updatePosition(dt);
     }
 
     public List<GameObject> getSceneEntities() {
-        List<GameObject> entities = new ArrayList<>();
-        entities.addAll(padList);
-        entities.add(ball);
-        return entities;
+        return List.of(leftPaddel, rightPaddel, ball);
     }
 
     public Paddel getLeftPaddel() {
-        return padList.get(0);
+        return leftPaddel;
     }
 
     public Paddel getRightPaddel() {
-        return padList.get(1);
+        return rightPaddel;
     }
 
-    public void setLeftPaddel(Paddel LeftPaddel) {
-        this.padList.set(0, LeftPaddel);
+    public void setLeftPaddel(Paddel leftPaddel) {
+        this.leftPaddel = leftPaddel;
     }
 
-    public void setRightPaddel(Paddel RightPaddel) {
-        this.padList.set(1, RightPaddel);
+    public void setRightPaddel(Paddel rightPaddel) {
+        this.rightPaddel = rightPaddel;
+    }
+
+    public void setBall(Ball ball) {
+        this.ball = ball;
     }
 }

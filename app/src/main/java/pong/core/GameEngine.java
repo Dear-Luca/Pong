@@ -2,7 +2,11 @@ package pong.core;
 
 import java.util.logging.*;
 
+import pong.common.Point2d;
+import pong.common.Vector2d;
 import pong.graphics.impl.GUI;
+import pong.model.impl.Ball;
+import pong.model.impl.Paddel;
 import pong.model.impl.World;
 
 public class GameEngine {
@@ -13,6 +17,9 @@ public class GameEngine {
 
     public void setup(){
         world = new World();
+        world.setLeftPaddel(new Paddel(new Point2d(50, 50), new Vector2d(0, 0)));
+        world.setRightPaddel(new Paddel(new Point2d(200, 200), new Vector2d(0, 0)));
+        world.setBall(new Ball(new Point2d(250, 300), new Vector2d(3, 3)));
         view = new GUI(world,500, 600);
     }
 
@@ -69,5 +76,6 @@ public class GameEngine {
      */
     protected void render() {
         logger.log(Level.INFO, "..render..");
+        view.render();
     }
 }
