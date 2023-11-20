@@ -19,7 +19,7 @@ public class GameEngine {
         world = new World();
         world.setLeftPaddel(new Paddel(new Point2d(50, 50), new Vector2d(0, 0)));
         world.setRightPaddel(new Paddel(new Point2d(200, 200), new Vector2d(0, 0)));
-        world.setBall(new Ball(new Point2d(250, 300), new Vector2d(3, 3)));
+        world.setBall(new Ball(new Point2d(250, 300), new Vector2d(30, 30)));
         view = new GUI(world,500, 600);
     }
 

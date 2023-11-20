@@ -11,6 +11,11 @@ public class Vector2d implements Serializable {
         this.y = y;
     }
 
+    public Vector2d(Point2d to, Point2d from){
+        this.x=to.getX()-from.getX();
+        this.y=to.getY()-from.getY();
+    }
+
     public Vector2d add(final Vector2d vet) {
         return new Vector2d(x + vet.getX(), y + vet.getY());
     }
