@@ -4,10 +4,11 @@ import javax.swing.*;
 
 import pong.model.impl.GameState;
 import pong.model.impl.World;
+import pong.input.api.Controller;
 
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
-import java.lang.ModuleLayer.Controller;
+
 
 public class GUI {
     private JFrame frame;
@@ -20,7 +21,7 @@ public class GUI {
         frame.setSize(width, height);
         frame.setResizable(false);
         this.scene = scene;
-        panel = new PongGamePanel(scene, width, height);
+        panel = new PongGamePanel(scene, controller, width, height);
         frame.getContentPane().add(panel);
         // frame.serUndecorated(true);
         frame.addWindowListener(new WindowAdapter() {

@@ -6,9 +6,14 @@ import pong.model.impl.Paddel;
 import pong.model.impl.World;
 
 public class MoveUp implements Command {
+    private Paddel paddel;
+
+    public MoveUp(Paddel paddel){
+        this.paddel = paddel;
+    }
 
     @Override
-    public void execute(World world, Paddel paddel) {
+    public void execute(World world) {
         paddel.setSpeed(new Vector2d(0, -3));
     }
 }

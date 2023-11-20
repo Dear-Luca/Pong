@@ -1,6 +1,5 @@
 package pong.input.api;
 
-import pong.model.impl.Paddel;
 import pong.model.impl.World;
 
 public interface Command {
@@ -9,5 +8,5 @@ public interface Command {
      * @param world
      * @param paddel
      */
-    void execute(World world, Paddel paddel);
+    void execute(World world);
 } 
