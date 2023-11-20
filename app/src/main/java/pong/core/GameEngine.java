@@ -11,6 +11,7 @@ import pong.input.api.Controller;
 import pong.model.impl.Ball;
 import pong.model.impl.Paddel;
 import pong.model.impl.World;
+import pong.common.Attributes;
 
 public class GameEngine implements Controller {
 
@@ -27,10 +28,10 @@ public class GameEngine implements Controller {
 
     public void setup() {
         world = new World();
-        world.setLeftPaddel(new Paddel(new Point2d(50, 50), new Vector2d(0, 0), 140, 30));
-        world.setRightPaddel(new Paddel(new Point2d(200, 200), new Vector2d(0, 0), 140, 30));
-        world.setBall(new Ball(new Point2d(250, 300), new Vector2d(30, 30), 60));
-        view = new GUI(world, 500, 600);
+        world.setLeftPaddel(new Paddel(new Point2d(50, 50), new Vector2d(0, 0)));
+        world.setRightPaddel(new Paddel(new Point2d(200, 200), new Vector2d(0, 0)));
+        world.setBall(new Ball(new Point2d(250, 300), new Vector2d(30, 30)));
+        view = new GUI(world,Attributes.FRAME_WIDTH, Attributes.FRAME_HEIGHT);
         view.setInputController(this);
     }
 

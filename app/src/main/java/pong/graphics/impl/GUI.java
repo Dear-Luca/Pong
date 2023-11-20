@@ -2,7 +2,6 @@ package pong.graphics.impl;
 
 import javax.swing.*;
 
-
 import pong.model.impl.World;
 import pong.input.api.Controller;
 
@@ -19,6 +18,7 @@ public class GUI {
         frame = new JFrame("PONG!!");
         frame.setSize(width, height);
         frame.setResizable(false);
+        //this.scene = scene;
         panel = new PongGamePanel(scene, controller, width, height);
         frame.getContentPane().add(panel);
         // frame.serUndecorated(true);
@@ -36,7 +36,6 @@ public class GUI {
         });
         frame.setVisible(true);
     }
-
 
     /**
      * Build a new render frame each time is called
