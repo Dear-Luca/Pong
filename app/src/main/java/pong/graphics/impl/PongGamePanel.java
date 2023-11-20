@@ -44,14 +44,17 @@ public class PongGamePanel extends JPanel {
                 RenderingHints.VALUE_RENDER_QUALITY);
         g2d.clearRect(0, 0, this.getWidth(), this.getHeight());
 
-        for(GameObject entity: scene.getSceneEntities()){
+        for (GameObject entity : scene.getSceneEntities()) {
             Point2d pos = entity.getCurrentPosition();
-            if(entity instanceof Ball){
+            if (entity instanceof Ball) {
+                Ball ball = (Ball) entity;
                 g2d.setColor(Color.BLACK);
-                g2d.fillOval((int)pos.getX()-20, (int)pos.getY()-20, 40, 40);
-            }else if(entity instanceof Paddel){
+                g2d.fillOval((int) pos.getX() - 20, (int) pos.getY() - 20, (int) ball.getRadius() / 2,
+                        (int) ball.getRadius() / 2);
+            } else if (entity instanceof Paddel) {
+                Paddel paddel = (Paddel) entity;
                 g2d.setColor(Color.DARK_GRAY);
-                g2d.fillRect((int)pos.getX()-20, (int)pos.getY()-20, 40, 40);
+                g2d.fillRect((int) pos.getX() - 20, (int) pos.getY() - 20, (int)paddel.getWidth(), (int)paddel.getLenght());
             }
         }
     }
@@ -68,13 +71,13 @@ public class PongGamePanel extends JPanel {
 
         @Override
         public void keyPressed(KeyEvent e) {
-            if(e.getKeyCode() == KeyEvent.VK_W){
+            if (e.getKeyCode() == KeyEvent.VK_W) {
                 controller.notifyCommand(new MoveUp(scene.getLeftPaddel()));
-            }else if(e.getKeyCode() == KeyEvent.VK_UP){
+            } else if (e.getKeyCode() == KeyEvent.VK_UP) {
                 controller.notifyCommand(new MoveUp(scene.getRightPaddel()));
-            }else if(e.getKeyCode() == KeyEvent.VK_S){
+            } else if (e.getKeyCode() == KeyEvent.VK_S) {
                 controller.notifyCommand(new MoveDown(scene.getLeftPaddel()));
-            }else if(e.getKeyCode() == KeyEvent.VK_DOWN){
+            } else if (e.getKeyCode() == KeyEvent.VK_DOWN) {
                 controller.notifyCommand(new MoveDown(scene.getRightPaddel()));
             }
 
@@ -82,13 +85,13 @@ public class PongGamePanel extends JPanel {
 
         @Override
         public void keyReleased(KeyEvent e) {
-            if(e.getKeyCode() == KeyEvent.VK_W){
+            if (e.getKeyCode() == KeyEvent.VK_W) {
                 controller.notifyCommand(new Stop(scene.getLeftPaddel()));
-            }else if(e.getKeyCode() == KeyEvent.VK_UP){
+            } else if (e.getKeyCode() == KeyEvent.VK_UP) {
                 controller.notifyCommand(new Stop(scene.getRightPaddel()));
-            }else if(e.getKeyCode() == KeyEvent.VK_S){
+            } else if (e.getKeyCode() == KeyEvent.VK_S) {
                 controller.notifyCommand(new Stop(scene.getLeftPaddel()));
-            }else if(e.getKeyCode() == KeyEvent.VK_DOWN){
+            } else if (e.getKeyCode() == KeyEvent.VK_DOWN) {
                 controller.notifyCommand(new Stop(scene.getRightPaddel()));
             }
         }

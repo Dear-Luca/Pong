@@ -1,7 +1,5 @@
 package pong.core;
 
-import java.util.logging.*;
-
 import java.util.concurrent.ArrayBlockingQueue;
 import java.util.concurrent.BlockingQueue;
 
@@ -14,25 +12,25 @@ import pong.model.impl.Ball;
 import pong.model.impl.Paddel;
 import pong.model.impl.World;
 
-public class GameEngine implements Controller{
+public class GameEngine implements Controller {
 
     private static final int CAPACITY = 100;
 
-    private long period = 6_944_444; /* 7 ms =~ 144hz (Standard)*/
+    private long period = 6_944_444; /* 7 ms =~ 144hz (Standard) */
     private GUI view;
     private World world;
     private BlockingQueue<Command> cmdQueue;
 
-    public GameEngine(){
+    public GameEngine() {
         cmdQueue = new ArrayBlockingQueue<>(CAPACITY);
     }
 
-    public void setup(){
+    public void setup() {
         world = new World();
-        world.setLeftPaddel(new Paddel(new Point2d(50, 50), new Vector2d(0, 0)));
-        world.setRightPaddel(new Paddel(new Point2d(200, 200), new Vector2d(0, 0)));
-        world.setBall(new Ball(new Point2d(250, 300), new Vector2d(30, 30)));
-        view = new GUI(world,500, 600);
+        world.setLeftPaddel(new Paddel(new Point2d(50, 50), new Vector2d(0, 0), 140, 30));
+        world.setRightPaddel(new Paddel(new Point2d(200, 200), new Vector2d(0, 0), 140, 30));
+        world.setBall(new Ball(new Point2d(250, 300), new Vector2d(30, 30), 60));
+        view = new GUI(world, 500, 600);
         view.setInputController(this);
     }
 
@@ -71,7 +69,7 @@ public class GameEngine implements Controller{
      */
     protected void processInput() {
         Command lastCommand = cmdQueue.poll();
-        if(lastCommand != null){
+        if (lastCommand != null) {
             lastCommand.execute(world);
         }
     }
