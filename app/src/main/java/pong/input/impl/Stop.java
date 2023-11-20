@@ -7,9 +7,14 @@ import pong.model.impl.World;
 
 public class Stop implements Command {
 
-    @Override
-    public void execute(World world, Paddel paddel) {
-        paddel.setSpeed(new Vector2d(0, 0));
+    private Paddel paddel;
+
+    public Stop(Paddel paddel){
+        this.paddel = paddel;
     }
-    
+
+    @Override
+    public void execute(World world) {
+        paddel.setSpeed(new Vector2d(0, 0));
+    }   
 }

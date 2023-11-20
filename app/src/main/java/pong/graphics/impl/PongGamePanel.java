@@ -7,10 +7,15 @@ import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.util.List;
 import java.awt.Color;
+import java.awt.event.KeyEvent.*;
 
 import javax.swing.JPanel;
 
 import pong.common.Point2d;
+import pong.input.api.Controller;
+import pong.input.impl.MoveDown;
+import pong.input.impl.MoveUp;
+import pong.input.impl.Stop;
 import pong.model.api.GameObject;
 import pong.model.impl.Ball;
 import pong.model.impl.Paddel;
@@ -19,14 +24,16 @@ import pong.model.impl.World;
 public class PongGamePanel extends JPanel {
 
     private World scene;
+    private Controller controller;
 
-    public PongGamePanel(World scene, int w, int h) {
+    public PongGamePanel(World scene, Controller controller, int w, int h) {
         this.scene = scene;
         setSize(w, h);
         this.addKeyListener(new PaddleMover());
         setFocusable(true);
         setFocusTraversalKeysEnabled(false);
         requestFocusInWindow();
+        this.controller = controller;
     }
 
     @Override
@@ -55,20 +62,33 @@ public class PongGamePanel extends JPanel {
 
         @Override
         public void keyTyped(KeyEvent e) {
-            // TODO Auto-generated method stub
-            throw new UnsupportedOperationException("Unimplemented method 'keyTyped'");
         }
 
         @Override
         public void keyPressed(KeyEvent e) {
-            // TODO Auto-generated method stub
-            throw new UnsupportedOperationException("Unimplemented method 'keyPressed'");
+            if(e.getKeyCode() == KeyEvent.VK_W){
+                controller.notifyCommand(new MoveUp(scene.getLeftPaddel()));
+            }else if(e.getKeyCode() == KeyEvent.VK_UP){
+                controller.notifyCommand(new MoveUp(scene.getRightPaddel()));
+            }else if(e.getKeyCode() == KeyEvent.VK_S){
+                controller.notifyCommand(new MoveDown(scene.getLeftPaddel()));
+            }else if(e.getKeyCode() == KeyEvent.VK_DOWN){
+                controller.notifyCommand(new MoveDown(scene.getRightPaddel()));
+            }
+
         }
 
         @Override
         public void keyReleased(KeyEvent e) {
-            // TODO Auto-generated method stub
-            throw new UnsupportedOperationException("Unimplemented method 'keyReleased'");
+            if(e.getKeyCode() == KeyEvent.VK_W){
+                controller.notifyCommand(new Stop(scene.getLeftPaddel()));
+            }else if(e.getKeyCode() == KeyEvent.VK_UP){
+                controller.notifyCommand(new Stop(scene.getRightPaddel()));
+            }else if(e.getKeyCode() == KeyEvent.VK_S){
+                controller.notifyCommand(new Stop(scene.getLeftPaddel()));
+            }else if(e.getKeyCode() == KeyEvent.VK_DOWN){
+                controller.notifyCommand(new Stop(scene.getRightPaddel()));
+            }
         }
 
     }

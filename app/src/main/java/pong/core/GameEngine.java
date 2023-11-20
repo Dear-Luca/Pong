@@ -2,18 +2,34 @@ package pong.core;
 
 import java.util.logging.*;
 
+import com.google.common.base.Objects;
+
+import java.util.concurrent.ArrayBlockingQueue;
+import java.util.concurrent.BlockingQueue;
+
 import pong.common.Point2d;
 import pong.common.Vector2d;
 import pong.graphics.impl.GUI;
+import pong.input.api.Command;
+import pong.input.api.Controller;
+import pong.input.impl.MoveDown;
 import pong.model.impl.Ball;
 import pong.model.impl.Paddel;
 import pong.model.impl.World;
 
-public class GameEngine {
+public class GameEngine implements Controller{
+
+    private static final int CAPACITY = 100;
+
     private long period = 6_944_444; /* 7 ms =~ 144hz (Standard)*/
     private GUI view;
     private Logger logger = Logger.getLogger("GameEngine");
     private World world;
+    private BlockingQueue<Command> cmdQueue;
+
+    public GameEngine(){
+        cmdQueue = new ArrayBlockingQueue<>(CAPACITY);
+    }
 
     public void setup(){
         world = new World();
@@ -57,7 +73,10 @@ public class GameEngine {
      * Processing the input of the game got in a cycle.
      */
     protected void processInput() {
-        logger.log(Level.INFO, "..process input..");
+        Command lastCommand = cmdQueue.poll();
+        if(lastCommand != null){
+            lastCommand.execute(world);
+        }
     }
 
     /**
@@ -67,8 +86,6 @@ public class GameEngine {
      * @param elapsed
      */
     protected void updateGame(long elapsed) {
-        logger.log(Level.INFO, "..update game: elapsed " + elapsed + "... Framerate: "
-                + Math.round(1_000_000_000.0 / elapsed) + " / 144");
         world.updateState(elapsed);
     }
 
@@ -76,7 +93,11 @@ public class GameEngine {
      * Rendering of the game in a cycle.
      */
     protected void render() {
-        logger.log(Level.INFO, "..render..");
         view.render();
+    }
+
+    @Override
+    public void notifyCommand(Command command) {
+        cmdQueue.add(command);
     }
 }

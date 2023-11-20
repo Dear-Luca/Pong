@@ -1,7 +1,6 @@
 package pong.model.impl;
 
 import java.util.List;
-
 import pong.model.api.GameObject;
 
 public class World {
