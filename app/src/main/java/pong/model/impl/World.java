@@ -1,6 +1,8 @@
 package pong.model.impl;
 
 import java.util.List;
+
+import pong.common.Point2d;
 import pong.model.api.GameObject;
 
 public class World {
@@ -39,5 +41,10 @@ public class World {
 
     public void setBall(Ball ball) {
         this.ball = ball;
+    }
+
+    private void checkBoundaries(){
+        Point2d posBall = ball.getCenter();
+        Point2d posPaddleR = rightPaddel.getCurrentPosition();
     }
 }
