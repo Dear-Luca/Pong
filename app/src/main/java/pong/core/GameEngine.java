@@ -69,6 +69,7 @@ public class GameEngine {
     protected void updateGame(long elapsed) {
         logger.log(Level.INFO, "..update game: elapsed " + elapsed + "... Framerate: "
                 + Math.round(1_000_000_000.0 / elapsed) + " / 144");
+        world.updateState(elapsed);
     }
 
     /**
