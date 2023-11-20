@@ -1,12 +1,15 @@
 package pong.model.impl;
 
 import java.util.List;
+
+import pong.common.Point2d;
 import pong.model.api.GameObject;
 
-public class World {
+public class World { 
     private Paddel leftPaddel;
     private Paddel rightPaddel;
     private Ball ball;
+    
 
     public World() {
     }
@@ -15,10 +18,17 @@ public class World {
         leftPaddel.updatePosition(dt);
         rightPaddel.updatePosition(dt);
         ball.updatePosition(dt);
+
+        checkBorders();
     }
 
     public List<GameObject> getSceneEntities() {
         return List.of(leftPaddel, rightPaddel, ball);
+    }
+
+    private void checkBorders(){
+        Point2d ballPosition = ball.getCurrentPosition();
+        
     }
 
     public Paddel getLeftPaddel() {
