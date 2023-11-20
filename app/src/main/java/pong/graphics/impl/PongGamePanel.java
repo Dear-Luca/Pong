@@ -58,6 +58,10 @@ public class PongGamePanel extends JPanel {
         }
     }
 
+    public void setInputController(Controller c) {
+        controller = c;
+    }
+
     private class PaddleMover implements KeyListener {
 
         @Override

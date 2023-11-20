@@ -14,6 +14,6 @@ public class MoveDown implements Command{
     
     @Override
     public void execute(World world) {
-        paddel.setSpeed(new Vector2d(0, 3));
+        paddel.setSpeed(new Vector2d(0, 30));
     }
 }

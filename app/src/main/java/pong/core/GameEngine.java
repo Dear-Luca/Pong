@@ -37,6 +37,7 @@ public class GameEngine implements Controller{
         world.setRightPaddel(new Paddel(new Point2d(200, 200), new Vector2d(0, 0)));
         world.setBall(new Ball(new Point2d(250, 300), new Vector2d(30, 30)));
         view = new GUI(world,500, 600);
+        view.setInputController(this);
     }
 
     public void mainLoop() {

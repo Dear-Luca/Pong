@@ -52,6 +52,6 @@ public class GUI {
     }
 
     public void setInputController(Controller c) {
-        controller = c;
+        panel.setInputController(c);
     }
 }
