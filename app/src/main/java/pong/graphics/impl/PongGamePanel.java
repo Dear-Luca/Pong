@@ -49,8 +49,8 @@ public class PongGamePanel extends JPanel {
             if (entity instanceof Ball) {
                 Ball ball = (Ball) entity;
                 g2d.setColor(Color.BLACK);
-                g2d.fillOval((int) pos.getX() - 20, (int) pos.getY() - 20, (int) ball.getRadius() / 2,
-                        (int) ball.getRadius() / 2);
+                g2d.fillOval((int) pos.getX() - 20, (int) pos.getY() - 20, (int) ball.getRadius() * 2,
+                        (int) ball.getRadius() * 2);
             } else if (entity instanceof Paddel) {
                 Paddel paddel = (Paddel) entity;
                 g2d.setColor(Color.DARK_GRAY);

@@ -3,14 +3,15 @@ package pong.model.impl;
 import java.util.List;
 
 import pong.common.Point2d;
+import pong.common.Vector2d;
 import pong.model.api.GameObject;
+import pong.common.Attributes;
 
 public class World { 
     private Paddel leftPaddel;
     private Paddel rightPaddel;
     private Ball ball;
     
-
     public World() {
     }
 
@@ -27,8 +28,11 @@ public class World {
     }
 
     private void checkBorders(){
-        Point2d ballPosition = ball.getCurrentPosition();
-        
+        if((ball.getCenter().getY() + ball.getRadius()) >= Attributes.FRAME_HEIGHT){
+            ball.setSpeed(new Vector2d(ball.getCurrentSpeed().getX(), -ball.getCurrentSpeed().getY()));
+        }else if((ball.getCenter().getY() - ball.getRadius()) <= 0){
+            ball.setSpeed(new Vector2d(ball.getCurrentSpeed().getX(), -ball.getCurrentSpeed().getY()));
+        }
     }
 
     public Paddel getLeftPaddel() {
