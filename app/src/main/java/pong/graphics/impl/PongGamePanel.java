@@ -31,22 +31,22 @@ public class PongGamePanel extends JPanel {
 
     @Override
     public void paint(Graphics g) {
-        Graphics2D g2 = (Graphics2D) g;
+        Graphics2D g2d = (Graphics2D) g;
 
-        g2.setRenderingHint(RenderingHints.KEY_ANTIALIASING,
+        g2d.setRenderingHint(RenderingHints.KEY_ANTIALIASING,
                 RenderingHints.VALUE_ANTIALIAS_ON);
-        g2.setRenderingHint(RenderingHints.KEY_RENDERING,
+        g2d.setRenderingHint(RenderingHints.KEY_RENDERING,
                 RenderingHints.VALUE_RENDER_QUALITY);
-        g2.clearRect(0, 0, this.getWidth(), this.getHeight());
+        g2d.clearRect(0, 0, this.getWidth(), this.getHeight());
 
         for(GameObject entity: scene.getSceneEntities()){
             Point2d pos = entity.getCurrentPosition();
             if(entity instanceof Ball){
-                g2.setColor(Color.BLACK);
-                g2.fillOval((int)pos.getX()-20, (int)pos.getY()-20, 40, 40);
+                g2d.setColor(Color.BLACK);
+                g2d.fillOval((int)pos.getX()-20, (int)pos.getY()-20, 40, 40);
             }else if(entity instanceof Paddel){
-                g2.setColor(Color.DARK_GRAY);
-                g2.fillRect((int)pos.getX()-20, (int)pos.getY()-20, 40, 40);
+                g2d.setColor(Color.DARK_GRAY);
+                g2d.fillRect((int)pos.getX()-20, (int)pos.getY()-20, 40, 40);
             }
         }
     }
