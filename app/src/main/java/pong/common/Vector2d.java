@@ -25,7 +25,7 @@ public class Vector2d implements Serializable {
     }
 
     public double getY() {
-        return this.x;
+        return this.y;
     }
 
     public Vector2d mul(double fact) {

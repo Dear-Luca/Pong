@@ -20,7 +20,7 @@ public class Point2d implements Serializable {
     }
 
     public double getY(){
-        return this.x;
+        return this.y;
     }
 
     @Override

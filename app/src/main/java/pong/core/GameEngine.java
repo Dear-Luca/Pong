@@ -2,8 +2,6 @@ package pong.core;
 
 import java.util.logging.*;
 
-import com.google.common.base.Objects;
-
 import java.util.concurrent.ArrayBlockingQueue;
 import java.util.concurrent.BlockingQueue;
 
@@ -12,7 +10,6 @@ import pong.common.Vector2d;
 import pong.graphics.impl.GUI;
 import pong.input.api.Command;
 import pong.input.api.Controller;
-import pong.input.impl.MoveDown;
 import pong.model.impl.Ball;
 import pong.model.impl.Paddel;
 import pong.model.impl.World;
@@ -23,7 +20,6 @@ public class GameEngine implements Controller{
 
     private long period = 6_944_444; /* 7 ms =~ 144hz (Standard)*/
     private GUI view;
-    private Logger logger = Logger.getLogger("GameEngine");
     private World world;
     private BlockingQueue<Command> cmdQueue;
 
